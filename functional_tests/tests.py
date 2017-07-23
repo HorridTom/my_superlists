@@ -103,13 +103,13 @@ class NewVisitorTest(LiveServerTestCase):
 
         # Bart gets his own unique URL
         bart_list_url = self.browser.current_url
-        self.assertRegex(francis_list_url, '/lists/.+')
+        self.assertRegex(bart_list_url, '/lists/.+')
         self.assertNotEqual(homer_list_url, bart_list_url)
 
         # Again, there is no trace of Homer's list
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy Duff', page_text)
-        self.assertIn('Buy milk', page_text)
+        self.assertIn('Cause mischief', page_text)
 
         # Satisfied, they both go back to sleep
 
