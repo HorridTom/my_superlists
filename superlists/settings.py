@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lists',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -80,6 +81,22 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, '../database/db.sqlite3'),
     }
 }
+
+
+# Email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'thelosttrombone@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+# Authentication
+
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = [
+    'accounts.authentication.PasswordlessAuthenticationBackend',
+]
 
 
 # Password validation
